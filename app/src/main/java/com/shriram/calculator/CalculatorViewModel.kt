@@ -28,6 +28,13 @@ class CalculatorViewModel : ViewModel() {
             }
 
             "=" -> {
+
+                // Remove the last character if it's an operator
+                if (calcValue.last() in "+-*/.") {
+                    calcValue = calcValue.dropLast(1)
+                    displayValue = displayValue.dropLast(1)
+                }
+
                 // perform calculation and update displayValue
                 showOperations = displayValue
 
