@@ -8,7 +8,6 @@ import net.objecthunter.exp4j.ExpressionBuilder
 
 class CalculatorViewModel : ViewModel() {
 
-
     var displayValue by mutableStateOf("")
     var calcValue by mutableStateOf("")
     var showOperations by mutableStateOf("")
@@ -28,11 +27,18 @@ class CalculatorViewModel : ViewModel() {
             }
 
             "=" -> {
-
                 // Remove the last character if it's an operator
                 if (calcValue.last() in "+-*/.") {
-                    calcValue = calcValue.dropLast(1)
-                    displayValue = displayValue.dropLast(1)
+                    // check if calcValue consist only operator (don't have any operands)
+                    if (calcValue == "+" || calcValue == "-" || calcValue == "*" || calcValue == "/") {
+                        calcValue = "0"
+                        displayValue = ""
+                    } else {
+                        // if last value is operand then remove it before performing calculation
+                        calcValue = calcValue.dropLast(1)
+                        displayValue = displayValue.dropLast(1)
+                    }
+
                 }
 
                 // perform calculation and update displayValue
@@ -44,15 +50,10 @@ class CalculatorViewModel : ViewModel() {
 
             else -> {
                 // Prevent multiple operators in a row
-                if (operator in "+-*/." && calcValue.isNotEmpty() && calcValue.last() in "+-*/.") {
+                if (operator in "+-*/.%" && calcValue.isNotEmpty() && calcValue.last() in "+-*/.%") {
                     calcValue = calcValue.dropLast(1)
                     displayValue = displayValue.dropLast(1)
-                }
-                // Prevent multiple decimal points in a single number
-                if (operator == "." && calcValue.contains(".")) {
-                    return
-                }
-                else if (operator == "." && (calcValue.isEmpty() || calcValue.last() in "+-*/")) {
+                } else if (operator == "." && (calcValue.isEmpty() || calcValue.last() in "+-*/%")) {
                     calcValue += "0."
                     displayValue += "0."
                 } else {
@@ -69,7 +70,7 @@ class CalculatorViewModel : ViewModel() {
         }
     }
 
-
+    // most important function to perform calculation using "expr" library
     private fun evaluateExpression(expression: String): Double {
         return try {
             val expr = ExpressionBuilder(expression).build()
