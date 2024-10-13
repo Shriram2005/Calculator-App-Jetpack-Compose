@@ -12,7 +12,7 @@ A simple and user-friendly Calculator App built using **Jetpack Compose**. This 
 
 ## 📱 Screenshots
 
-![Screenshot 2024-08-29 230927](https://github.com/user-attachments/assets/e88f9588-1339-4385-9f2c-52114fea251f)
+<img src="https://github.com/user-attachments/assets/e88f9588-1339-4385-9f2c-52114fea251f" height="600">
 
 
 ## 🎨 UI Design
