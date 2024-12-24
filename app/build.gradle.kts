@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.shriram.calculator"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.shriram.calculator"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -66,9 +66,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-
+    // viewmodel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-
     // library to perform calculation
     implementation(libs.exp4j)
 }

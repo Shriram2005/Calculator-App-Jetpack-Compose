@@ -52,7 +52,10 @@ enum class ButtonState { Pressed, Idle }
 @SuppressLint("ReturnFromAwaitPointerEventScope")
 fun Modifier.bounceClick() = composed {
     var buttonState by remember { mutableStateOf(ButtonState.Idle) }
-    val scale by animateFloatAsState(if (buttonState == ButtonState.Pressed) 0.9f else 1f)
+    val scale by animateFloatAsState(
+        if (buttonState == ButtonState.Pressed) 0.9f else 1f,
+        label = "bounceClick"
+    )
 
     this
         .graphicsLayer {

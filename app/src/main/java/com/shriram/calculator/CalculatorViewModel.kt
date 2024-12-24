@@ -38,7 +38,6 @@ class CalculatorViewModel : ViewModel() {
                         calcValue = calcValue.dropLast(1)
                         displayValue = displayValue.dropLast(1)
                     }
-
                 }
 
                 // perform calculation and update displayValue

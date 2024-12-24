@@ -39,14 +39,6 @@ fun CalculatorScreen() {
         verticalArrangement = Arrangement.Bottom
 
     ) {
-//        Text(
-//            text = "CALCULATOR",
-//            color = Color.White,
-//            fontSize = 25.sp,
-//            fontWeight = FontWeight.Bold,
-//            modifier = Modifier.fillMaxWidth(),
-//            textAlign = TextAlign.Center
-//        )
 
         Spacer(modifier = Modifier.weight(1f))
 
@@ -66,7 +58,7 @@ fun CalculatorScreen() {
             fontSize = 38.sp,
             color = Color.White,
             textAlign = TextAlign.End,
-            maxLines = 2,
+            maxLines = 3,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(0.dp, 20.dp, 0.dp, 40.dp),
